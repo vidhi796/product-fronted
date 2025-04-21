@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pehlgam - Adventure Awaits!</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    .cover-container,
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .cover-image {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .description {
+      margin-top: 30px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #2c3e50;
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #3498db;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .adventure-place {
+      display: flex;
+      margin-bottom: 60px;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      align-items: center;
+      min-height: 350px;
+    }
+
+    .place-description {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .place-image {
+      flex: 1;
+      height: 350px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .subject-image {
+      flex: 1;
+      max-height: 30%;
+      width: 20%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .subject-description {
+      flex: 1;
+      padding: 10px;
+      display: inside;
+      flex-direction: column;
+      margin-top: 40px;
+      justify-content: left;
+      text-align: left;
+    }
+
+    /* Parent container for the row */
+    .row-container {
+      display: flex;
+      gap: 30px;
+      /* Space between columns */
+      align-items: flex-start;
+      /* Align items at the top */
+      margin: 2rem 0;
+      width: 100%;
+    }
+
+    /* Image container */
+    .s-image {
+      flex: 0 0 30%;
+      /* Don't grow, don't shrink, start at 30% width */
+      max-width: 30%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .s-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Description container */
+    .s-description {
+      flex: 1;
+      /* Take remaining space */
+      padding: 15px;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .row-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .s-image {
+        flex: none;
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+
+    .place-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: trainsidnsform 0.5s ease;
+    }
+
+    .place-image:hover img {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      color: #3498db;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      text-align: center;
+      width: 100%;
+    }
+
+    .adventure-place p {
+      margin-bottom: 25px;
+      font-size: 1.1em;
+      color: #555;
+      text-align: center;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin: 10px auto 0;
+      padding: 12px 30px;
+      background: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s;
+      border: 2px solid #3498db;
+    }
+
+    .cta-button:hover {
+      background: #2980b9;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Crystal Caves Card Styles */
+    .card-details {
+      margin: 20px 0;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .history-section {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border-left: 4px solid #6f42c1;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .info-item {
+      background: #f1f8ff;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #3498db;
+    }
+
+    .info-item h4 {
+      color: #2c3e50;
+      margin-top: 0;
+      border-bottom: 2px dashed #3498db;
+      padding-bottom: 5px;
+    }
+
+    .safety-tips {
+      background: #fff3e0;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      border-left: 4px solid #fd7e14;
+    }
+
+    .image-caption {
+      position: absolute;
+      bottom: 60;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9em;
+    }
+
+    /* Responsive design for smaller screens */
+    @media (max-width: 768px) {
+      .adventure-place {
+        flex-direction: column;
+        min-height: auto;
+      }
+
+      .place-image {
+        width: 100%;
+        height: 250px;
+        order: -1;
+      }
+
+      .place-description {
+        padding: 25px;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cover-container">
+    <!-- Cover Image -->
+    <img src="2.jpg" alt="Pehlgam Cover Image" class="cover-image">
+
+    <!-- Description -->
+    <div class="description">
+      <h1>Welcome to Pehlgam!</h1>
+      <p>Pehlgam is an exciting adventure game where you explore mystical lands, solve puzzles, and battle fierce
+        enemies. Embark on a journey filled with challenges, treasures, and unforgettable stories. The game features
+        stunning landscapes, intricate storylines, and dynamic characters that will keep you engaged for hours. As you
+        progress throughple endings and countless paths to explore, every playthrough offers a unique experience. Are
+        you ready to begin your the game, you'll uncover ancient secrets, develop your skills, and make choices that
+        shape your
+        destiny. With multi adventure?</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Pehlgam Adventure Places</h1>
+
+    <!-- First Adventure Place -->
+    <div class="adventure-place">
+      <div class="place-description">
+        <h2>The Crystal Caves</h2>
+        <p>Explore the breathtaking Crystal Caves of Pehlgam, where shimmering formations glow with mysterious energy.
+          Navigate through narrow passages and solve ancient puzzles to uncover the secrets hidden within these luminous
+          caverns. Watch out for the cave guardians!</p>
+        <a href="#" class="cta-button">Explore Now</a>
+      </div>
+      <div class="place-image">
+        <img src="3.jpg" alt="Crystal Caves">
+      </div>
+    </div>
+
+    <!-- Crystal Caves Details -->
+    <div class="card-details">
+      <div class="history-section">
+        <h3>Ancient History</h3>
+        <p>Discovered in 1783 by local shepherds, these caves were sacred to the ancient Luminari civilization who
+          believed the crystals contained trapped starlight. Archaeologists have found ritual chambers dating back 3,000
+          years
+          where priests conducted "light ceremonies".</p>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <h4>Best Time to Visit</h4>
+          <ul>
+            <li><strong>October-April</strong>: Cooler temperatures (12-18°C)</li>
+            <li><strong>June-August</strong>: Bioluminescent blooms</li>
+            <li>Avoid monsoon season (July-Sept)</li>
+          </ul>
+        </div>
+        <div class="info-item">
+          <h4>Key Features</h4>
+          <ul>
+            <li>Grand Crystal Hall (120m tall)</li>
+            <li>Mirror Lake Cavern</li>
+            <li>Ancient Luminari inscriptions</li>
+            <li>Glowworm colonies</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="safety-tips">
+        <h3>Explorer's Notes</h3>
+        <p>The caves maintain a constant 85% humidity. Proper footwear with grip is essential for the crystal floors.
+          Flash photography is prohibited in the Hall of Echoes as it disturbs the cave guardians (a rare species of
+          blind bats).</p>
+        <div>
+
+          <img src="3.jpg" alt="Crystal Caves" class="subject-image">
+        </div>
+        <div class="subject-description">
+          <p>Pehlgam is an exciting adventure game where you explore mystical lands, solve puzzles, and battle fierce
+            enemies. Embark on a journey filled with challenges, treasures, and unforgettable stories. The game features
+            stunning landscapes, intricate storylines, and dynamic characters that will keep you engaged for hours. As
+            you
+            progress throughple endings and countless paths to explore, every playthrough offers a unique experience.
+            Are
+            you ready to begin your the game, you'll uncover ancient secrets, develop your skills, and make choices that
+            shape your
+            destiny. With multi adventure?.</p>
+        </div>
+        <div class="row-container">
+          <div class="s-image">
+            <img src="6.jpg" alt="Crystal Caves">
+          </div>
+          <div class="s-description">
+            <p>Pehlgam invites players into a breathtaking mystical world where ancient secrets and perilous challenges
+              await at every turn. Journey through enchanted crystal caves, lush forests teeming with forgotten magic,
+              and crumbling ruins guarded by mythical creatures. As a brave adventurer, you’ll solve intricate puzzles,
+              forge alliances with dynamic characters, and battle fierce enemies to uncover the truth behind a lost
+              civilization. Every choice you make shapes the branching narrative, leading to multiple endings and
+              endless replayability. With its stunning visuals, rich lore, and heart-pounding encounters, Pehlgam isn’t
+              just a game—it’s an epic odyssey where courage and wit determine your destiny. Will you rise as the
+              realm’s savior… or become its greatest downfall?</p>
+          </div>
+        </div>
+      </div>
+      <!-- Second Adventure Place -->
+      <div class="adventure-place">
+        <div class="place-description">
+          <h2>Whispering Forest</h2>
+          <p>Enter the enchanted Whispering Forest where trees communicate in hushed tones. This magical woodland is
+            home
+            to rare creatures and hidden pathways that change with the seasons. Collect magical herbs and befriend
+            forest
+            spirits to gain their wisdom and assistance.</p>
+          <a href="#" class="cta-button">Explore Now</a>
+        </div>
+        <div class="place-image">
+          <img src="4.jpg" alt="Whispering Forest">
+        </div>
+      </div>
+
+      <!-- Third Adventure Place -->
+      <div class="adventure-place">
+        <div class="place-description">
+          <h2>Skyreach Peaks</h2>
+          <p>Challenge yourself on the towering Skyreach Peaks, where the air is thin and the views are spectacular.
+            Scale
+            icy cliffs, navigate treacherous ridges, and discover the abandoned temples of mountain monks. The higher
+            you
+            climb, the greater the rewards - but beware of the legendary ice drakes!</p>
+          <a href="#" class="cta-button">Explore Now</a>
+        </div>
+        <div class="place-image">
+          <img src="5.jpg" alt="Skyreach Peaks">
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .container {
+            position: relative;
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+        }
+
+        .image-before,
+        .image-after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .image-before {
+            background-image: url('https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1680&q=80');
+            clip-path: inset(0 0 0 50%);
+        }
+
+        .image-after {
+            background-image: url('https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1670&q=80');
+        }
+
+        .slider {
+            position: absolute;
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            outline: none;
+            margin: 0;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .before-after-text {
+            position: absolute;
+            bottom: 20px;
+            padding: 8px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border-radius: 20px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .before-text {
+            left: 20px;
+        }
+
+        .after-text {
+            right: 20px;
+        }
+
+        .food-blog {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 25px;
+            background-color: #fff8f0;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Georgia', serif;
+            color: #5a3e36;
+        }
+
+        .food-blog h2 {
+            font-size: 28px;
+            color: #cf8b5e;
+            margin-bottom: 15px;
+        }
+
+        .food-blog p {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .food-collage {
+            max-width: 1000px;
+            margin: 50px auto;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .food-collage h2 {
+            font-size: 28px;
+            color: #d35400;
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .img-box {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .img-box:hover img {
+            transform: scale(1.05);
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .chef-section {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .chef-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+            background-color: #fff8f0;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .chef-image {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .chef-image img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chef-info {
+            flex: 2 1 500px;
+        }
+
+        .chef-info h2 {
+            font-size: 26px;
+            color: #d35400;
+            margin-bottom: 15px;
+        }
+
+        .chef-special-column {
+            max-width: 900px;
+            margin: 60px auto;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+        
+        .chef-special-column h2 {
+            font-size: 30px;
+            color: #d35400;
+            margin-bottom: 40px;
+        }
+        
+        .dish {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            background-color: #fffaf3;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+        }
+        
+        .dish img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .dish-info h3 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .dish-info p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="chef-section">
+            <div class="chef-container">
+                <div class="chef-image">
+                    <img src="images.jpg" alt="Chef Portrait">
+                </div>
+                <div class="chef-info">
+                    <h2>Meet Chef Antonio Rossi</h2>
+                    <p>
+                        With over 15 years of culinary experience, Chef Antonio brings passion, creativity, and authenticity
+                        to every dish. Known for blending traditional Italian flavors with modern twists, his food tells
+                        stories of heritage, love, and seasonal inspiration. Whether in the kitchen or teaching cooking
+                        classes, Chef Antonio is all about sharing joy through food.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+   
+    <div class="food-blog">
+        <h2>The Secret Ingredient: Love in Every Bite</h2>
+        <p>
+            There's something magical about a home-cooked meal—the aroma that fills the kitchen, the sizzle in the pan,
+            and the warmth it brings to the table. In this blog, we explore heartwarming recipes, family favorites, and
+            comfort food classics that bring people together. Whether you're a seasoned chef or just starting out,
+            there's always a new flavor to discover and a story to tell behind every dish.
+        </p>
+    </div>
+    <div class="food-collage">
+        <h2>Delicious Moments Captured</h2>
+        <div class="grid">
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=800&q=80"
+                    alt="Pizza">
+                <h4>Cheesy Pizza</h4>
+
+            </div>
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80"
+                    alt="Pasta Dish" alt="Noodles">
+                <h4>Asian Noodles</h4>
+
+            </div>
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80"
+                    alt="Avocado Toast">
+                <h4>Avocado Toast</h4>
+
+            </div>
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1546069901-eacef0df6022?auto=format&fit=crop&w=800&q=80"
+                    alt="Steak Plate">
+                <h4>Grilled Steak</h4>
+
+            </div>
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=800&q=80"
+                    alt="Fruit Bowl">
+                <h4>Fruit Bowl</h4>
+
+            </div>
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=800&q=80"
+                    alt="Cupcake">
+                <h4>Cupcake</h4>
+
+
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="chef-special-column">
+        <h2>Chef Antonio Rossi's Signature Dishes</h2>
+    
+        <div class="dish">
+            <img src="https://images.unsplash.com/photo-1506354666786-959d6d497f1a?auto=format&fit=crop&w=800&q=80" alt="Truffle Pasta">
+            <div class="dish-info">
+                <h3>Truffle Tagliatelle</h3>
+                <p>
+                    A luxurious blend of hand-rolled pasta tossed with creamy truffle sauce, topped with shaved black truffles and parmesan.
+                </p>
+            </div>
+        </div>  
+    
+        <div class="dish">
+            <img src="butter.jpg" alt="Lobster Dish">
+            <div class="dish-info">
+                <h3>Butter-Poached Lobster</h3>
+                <p>
+                    Succulent lobster tail gently poached in herb butter, served with lemon foam and microgreens for a refined finish.
+                </p>
+            </div>
+        </div>
+    
+        <div class="dish">
+            <img src="img1.jpg" alt="Risotto">
+            <div class="dish-info">
+                <h3>Saffron Risotto</h3>
+                <p>
+                    A rich and creamy risotto infused with saffron and garnished with crispy pancetta and edible flowers.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="image-container">
+            <div class="image-after"></div>
+            <div class="image-before"></div>
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+
+        </div>
+    </div>
+
+    <script>
+        const slider = document.getElementById('myRange');
+        const beforeImage = document.querySelector('.image-before');
+
+        slider.oninput = function () {
+            let sliderValue = this.value;
+            beforeImage.style.clipPath = `inset(0 0 0 ${sliderValue}%)`;
+        }
+    </script>
+
+</body>
+
+</html>

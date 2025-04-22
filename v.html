@@ -13,7 +13,6 @@
       background-color: #f4f4f9;
       color: #333;
     }
-
     .cover-container,
     .container {
       max-width: 1200px;
@@ -103,17 +102,13 @@
     .row-container {
       display: flex;
       gap: 30px;
-      /* Space between columns */
       align-items: flex-start;
-      /* Align items at the top */
       margin: 2rem 0;
       width: 100%;
     }
 
-    /* Image container */
     .s-image {
       flex: 0 0 30%;
-      /* Don't grow, don't shrink, start at 30% width */
       max-width: 30%;
       position: relative;
       overflow: hidden;
@@ -131,7 +126,6 @@
     /* Description container */
     .s-description {
       flex: 1;
-      /* Take remaining space */
       padding: 15px;
       text-align: left;
       line-height: 1.6;
@@ -284,27 +278,217 @@
       .info-grid {
         grid-template-columns: 1fr;
       }
+    }
 
+    /* Poll Section Styles */
+    .poll-section {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+
+    .poll-option {
+      margin: 15px 0;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .poll-option:hover {
+      background: #e9ecef;
+      transform: translateX(10px);
+    }
+
+    .poll-option input[type="radio"] {
+      margin-right: 15px;
+    }
+
+    /* MCQ Section Styles */
+    .mcq-section {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+    }
+
+    .mcq-question {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 4px solid #3498db;
+    }
+
+    .mcq-options {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 1rem;
+    }
+
+    .mcq-options label {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mcq-options label:hover {
+      background: #e3f2fd;
+    }
+
+    .mcq-options input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .option-text {
+      font-size: 1rem;
+      color: #2c3e50;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+
+      .poll-section,
+      .mcq-section {
+        padding: 1rem;
+      }
+
+      .mcq-options label {
+        padding: 10px;
+      }
+    }
+
+    .footer {
+      background-color: #1f2937;
+      color: white;
+      padding: 2rem 1rem;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-section {
+      padding: 1rem;
+    }
+
+    .footer-heading {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #60a5fa;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-link {
+      color: #e5e7eb;
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      display: block;
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: #60a5fa;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #374151;
+      border-radius: 4px;
+      background-color: #111827;
+      color: white;
+    }
+
+    .newsletter-button {
+      background-color: #60a5fa;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .newsletter-button:hover {
+      background-color: #3b82f6;
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #374151;
+      text-align: center;
+      color: #9ca3af;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      color: #e5e7eb;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-link:hover {
+      color: #60a5fa;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-section {
+        text-align: center;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="cover-container">
-    <!-- Cover Image -->
-    <img src="2.jpg" alt="Pehlgam Cover Image" class="cover-image">
+  <!-- Cover Image -->
+  <img src="2.jpg" alt="Pehlgam Cover Image" class="cover-image">
 
-    <!-- Description -->
-    <div class="description">
-      <h1>Welcome to Pehlgam!</h1>
-      <p>Pehlgam is an exciting adventure game where you explore mystical lands, solve puzzles, and battle fierce
-        enemies. Embark on a journey filled with challenges, treasures, and unforgettable stories. The game features
-        stunning landscapes, intricate storylines, and dynamic characters that will keep you engaged for hours. As you
-        progress throughple endings and countless paths to explore, every playthrough offers a unique experience. Are
-        you ready to begin your the game, you'll uncover ancient secrets, develop your skills, and make choices that
-        shape your
-        destiny. With multi adventure?</p>
-    </div>
+  <!-- Description -->
+  <div class="description">
+    <h1>Welcome to Pehlgam!</h1>
+    <p>Pehlgam is an exciting adventure game where you explore mystical lands, solve puzzles, and battle fierce
+      enemies. Embark on a journey filled with challenges, treasures, and unforgettable stories. The game features
+      stunning landscapes, intricate storylines, and dynamic characters that will keep you engaged for hours. As you
+      progress throughple endings and countless paths to explore, every playthrough offers a unique experience. Are
+      you ready to begin your the game, you'll uncover ancient secrets, develop your skills, and make choices that
+      shape your
+      destiny. With multi adventure?</p>
+  </div>
   </div>
 
   <div class="container">
@@ -337,20 +521,18 @@
       <div class="info-grid">
         <div class="info-item">
           <h4>Best Time to Visit</h4>
-          <ul>
-            <li><strong>October-April</strong>: Cooler temperatures (12-18°C)</li>
-            <li><strong>June-August</strong>: Bioluminescent blooms</li>
-            <li>Avoid monsoon season (July-Sept)</li>
-          </ul>
+          
+            <p>October-April Cooler temperatures (12-18°C)<br>
+            June-August Bioluminescent blooms<br>
+            Avoid monsoon season (July-Sept)</p>
+        
         </div>
         <div class="info-item">
           <h4>Key Features</h4>
-          <ul>
-            <li>Grand Crystal Hall (120m tall)</li>
-            <li>Mirror Lake Cavern</li>
-            <li>Ancient Luminari inscriptions</li>
-            <li>Glowworm colonies</li>
-          </ul>
+          <p>Grand Crystal Hall (120m tall)<br>
+            Mirror Lake Cavern<br>
+            Ancient Luminari inscriptions<br>
+            Glowworm colonies</p> 
         </div>
       </div>
 
@@ -422,6 +604,109 @@
         </div>
       </div>
     </div>
+    <!-- Poll Section -->
+    <div class="card-details" style="margin-top: 40px;">
+      <h2>Travel Preferences Poll</h2>
+      <div class="poll-section">
+        <h3>What's your ideal adventure activity?</h3>
+        <form class="poll-form">
+          <div class="poll-option">
+            <input type="radio" id="hiking" name="adventure-preference" value="hiking">
+            <label for="hiking">Mountain Hiking</label>
+          </div>
+          <div class="poll-option">
+            <input type="radio" id="caving" name="adventure-preference" value="caving">
+            <label for="caving">Cave Exploration</label>
+          </div>
+          <div class="poll-option">
+            <input type="radio" id="wildlife" name="adventure-preference" value="wildlife">
+            <label for="wildlife">Wildlife Safari</label>
+          </div>
+          <div class="poll-option">
+            <input type="radio" id="cultural" name="adventure-preference" value="cultural">
+            <label for="cultural">Cultural Immersion</label>
+          </div>
+          <button type="submit" class="cta-button">Submit Vote</button>
+        </form>
+      </div>
+    </div>
+    <!-- MCQ Section -->
+    <div class="card-details" style="margin: 40px 0;">
+      <h2>Travel Knowledge Quiz</h2>
+      <div class="mcq-section">
+        <div class="mcq-question">
+          <h3>1. What's the most important item to pack for mountain hiking?</h3>
+          <div class="mcq-options">
+            <label>
+              <input type="radio" name="q1" value="a">
+              <span class="option-text">A) Proper hiking boots</span>
+            </label>
+            <label>
+              <input type="radio" name="q1" value="b">
+              <span class="option-text">B) Extra snacks</span>
+            </label>
+            <label>
+              <input type="radio" name="q1" value="c">
+              <span class="option-text">C) Travel guidebook</span>
+            </label>
+          </div>
+          <div class="mcq-question">
+            <h3>2. When exploring caves, you should always:</h3>
+            <div class="mcq-options">
+              <label>
+                <input type="radio" name="q2" value="a">
+                <span class="option-text">A) Go alone for better experience</span>
+              </label>
+              <label>
+                <input type="radio" name="q2" value="b">
+                <span class="option-text">B) Inform someone about your plans</span>
+              </label>
+              <label>
+                <input type="radio" name="q2" value="c">
+                <span class="option-text">C) Rely on smartphone flashlight</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="cta-button">Check Answers</button>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-heading">About Us</h3>
+            <p class="footer-text">Discover the world with TRAWEL. We provide authentic travel experiences and expert
+              advice to make your journeys unforgettable.</p>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-heading">Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#" class="footer-link">Privacy Policy</a></li>
+              <li><a href="#" class="footer-link">Terms of Service</a></li>
+              <li><a href="#" class="footer-link">FAQ</a></li>
+              <li><a href="#" class="footer-link">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3 class="footer-heading">Newsletter</h3>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Enter your email" class="newsletter-input">
+              <button type="submit" class="newsletter-button">Subscribe</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="social-links">
+            <a href="#" class="social-link">Facebook</a>
+            <a href="#" class="social-link">Twitter</a>
+            <a href="#" class="social-link">Instagram</a>
+            <a href="#" class="social-link">YouTube</a>
+          </div>
+          <p>&copy; 2023 TRAWEL. All rights reserved.</p>
+        </div>
+      </footer>
 </body>
 
 </html>
